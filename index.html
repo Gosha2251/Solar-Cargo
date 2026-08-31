@@ -2,27 +2,92 @@
 <html lang="lv">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solar Cargo System</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<div class="container">
+
+<header class="site-header">
     <h1>Solar Cargo System</h1>
+    <p>Konteineru pārvaldības demonstrācijas lapa</p>
+</header>
 
-    <p>Solar Cargo ir loģistikas sistēma konteineru pārvaldībai.</p>
+<nav class="site-nav">
+    <a href="index.html">Sākums</a>
+    <a href="#saraksts">Konteineru saraksts</a>
+    <a href="#pievienot">Pievienot konteineru</a>
+</nav>
 
-    <h2>Lietotāji</h2>
-    <ul>
-        <li>Dispečers</li>
-        <li>Noliktavas operators</li>
-        <li>Vadītājs</li>
-    </ul>
+<main class="layout">
 
-    <h2>Navigācija</h2>
-    <ul>
-        <li><a href="konteineri.html">Konteineru saraksts</a></li>
-        <li><a href="statistika.html">Statistika</a></li>
-    </ul>
+<section class="card" id="saraksts">
+    <h2>Konteineru saraksts</h2>
+
+    <table class="cargo-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nosaukums</th>
+                <th>Svars (kg)</th>
+                <th>Statuss</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>SC-501</td><td>Plastmasas caurules</td><td>6000</td><td>Ceļā</td></tr>
+            <tr><td>SC-556</td><td>Tērauda Tvertnes</td><td>4000</td><td>Noliktavā</td></tr>
+            <tr><td>SC-573</td><td>Transformatori</td><td>22000</td><td>Piegādāts</td></tr>
+            <tr><td>SC-704</td><td>Ūdens sūkņi</td><td>14000</td><td>Ceļā</td></tr>
+        </tbody>
+    </table>
+</section>
+
+<section class="card" id="pievienot">
+    <h2>Pievienot konteineru</h2>
+
+    <form class="cargo-form">
+        <div class="form-group">
+            <label for="container-id">Konteinera ID</label>
+            <input type="text" id="container-id" name="container_id">
+        </div>
+
+        <div class="form-group">
+            <label for="container-name">Nosaukums</label>
+            <input type="text" id="container-name" name="container_name">
+        </div>
+
+        <div class="form-group">
+            <label for="weight">Svars (kg)</label>
+            <input type="number" id="weight" name="weight">
+        </div>
+
+        <div class="form-group">
+            <label for="status">Statuss</label>
+            <select id="status" name="status">
+                <option>Ceļā</option>
+                <option>Noliktavā</option>
+                <option>Piegādāts</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="notes">Piezīmes</label>
+            <textarea id="notes" name="notes" rows="4"></textarea>
+        </div>
+
+        <button type="submit">Saglabāt</button>
+    </form>
+</section>
+
+</main>
+
+<footer class="site-footer">
+    <p>&copy; 2026 Solar Cargo</p>
+</footer>
+
+</div>
 
 </body>
 </html>
