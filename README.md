@@ -91,6 +91,19 @@ Nākotnē projektu varētu paplašināt:
 
 ---
 
+## 🔄 Datu plūsma
+
+Solar Cargo izmanto vienkāršu datu plūsmu:
+
+1. Lietotājs aizpilda konteinera formu.
+2. Forma nosūta datus uz Google Sheets, izmantojot Web App URL.
+3. Google Sheets saglabā ievadītos datus tabulā.
+4. Projekta lapā iframe parāda aktuālo datu tabulu.
+
+Šī plūsma ļauj simulēt backend darbību bez servera.
+
+---
+
 ## 👤 Autors
 
 Deniss Cvetkovs  
