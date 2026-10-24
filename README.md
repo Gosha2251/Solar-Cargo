@@ -1,6 +1,30 @@
 # Solar Cargo — Web Projekts
 
-Vienkārša statiska web sistēma konteineru pārvaldībai, izstrādāta PB2 moduļa ietvaros. Projekts demonstrē pamata HTML/CSS lietojumu, failu struktūru, publicēšanu un dokumentācijas izveidi.
+## Aktuālais projektā
+
+### Izmaiņas
+Projektā ir modernizēta datu glabāšanas sistēma, izmantojot MariaDB datubāzi, kas nodrošina centralizētu datu glabāšanu un efektīvāku informācijas apstrādi.
+
+**PB2 versijā:** sistēma izmantoja HTML, CSS, Google Forms un Google Sheets datu glabāšanai. Lietotāji varēja ievadīt konteineru informāciju formā, bet dati tika glabāti ārpus projekta datubāzes.
+
+**Pizīme:**
+*Pašlaik Web lapa nav savienota ar datubāzi, taču viss nepieciešamais sagatavots, lai turpmāk to savienot.*
+
+### Kas mainījās salīdzinājumā ar PB2?
+
+PB2 versijā:
+
+- dati tika glabāti Google Forms un Google Sheets;
+- nebija SQL datubāzes;
+- nebija iespējams izmantot SQL vaicājumus datu analīzei;
+- datu pārvaldība bija ierobežota.
+
+PB3 versijā:
+
+- dati tiek glabāti MariaDB datubāzē;
+- izveidota tabula `containers`;
+- iespējams izmantot SELECT vaicājumus;
+- iespējams filtrēt, kārtot un analizēt datus.
 
 ---
 
@@ -12,11 +36,9 @@ Solar Cargo ir neliela web lapa, kas paredzēta konteineru pārvaldības sistēm
 - stila faila (`style.css`);
 - vienkāršas navigācijas un satura struktūras.
 
-Projekts ir statisks — tas neizmanto JavaScript, datubāzes vai backend.
-
 ---
 
-## 🔧 Funkcionalitāte
+### 🔧 Funkcionalitāte
 
 - Galvenā lapa ar projekta informāciju.
 - Vienkāršs HTML/CSS dizains.
@@ -24,13 +46,93 @@ Projekts ir statisks — tas neizmanto JavaScript, datubāzes vai backend.
 
 ---
 
-## ▶️ Kā palaist projektu lokāli
+###  ▶️ Kā palaist projektu lokāli
 
 1. Lejupielādē projekta mapi.
 2. Atver `index.html` failu jebkurā pārlūkprogrammā (Chrome, Edge, Firefox).
 3. CSS ielādēsies automātiski no `style.css`.
 
 Nav nepieciešama instalācija, serveris vai papildu konfigurācija.
+
+---
+
+## Datu glabāšana
+
+### Datubāzes struktūra
+
+**Datubāze:**
+
+```sql
+solar_cargo
+```
+
+**Tabula:**
+
+```sql
+containers
+```
+
+**Lauki:**
+
+- id
+- cargo_code
+- cargo_name
+- mass_kg
+- status
+- created_at
+
+---
+
+### Kā izveidot datubāzi?
+
+1. Izpildīt failu `solar_cargo_schema.sql`
+2. Izpildīt failu `solar_cargo_data.sql`
+3. Izpildīt failu `solar_cargo_queries.sql`
+
+---
+
+### Kā pārbaudīt migrāciju?
+
+Migrācija tika pārbaudīta ar šādiem vaicājumiem:
+
+```sql
+SELECT * FROM containers;
+```
+
+```sql
+SELECT COUNT(*) FROM containers;
+```
+
+```sql
+SELECT status, COUNT(*) FROM containers GROUP BY status;
+```
+
+```sql
+SELECT * FROM containers ORDER BY mass_kg DESC;
+```
+
+---
+
+### Zināmie riski
+
+- nepareizs datu tips;
+- nepareizs UTF-8 kodējums;
+- dublikāti laukā cargo_code;
+- tukši obligātie lauki;
+- kļūdaini statusu nosaukumi.
+
+---
+
+### Rollback plāns
+
+Ja migrācija neizdodas:
+
+1. Dzēst datubāzi solar_cargo.
+2. Izveidot datubāzi no jauna.
+3. Atkārtoti palaist:
+   - solar_cargo_schema.sql
+   - solar_cargo_data.sql
+4. Pārbaudīt datus ar SELECT vaicājumiem.
 
 ---
 
@@ -86,8 +188,6 @@ Nākotnē projektu varētu paplašināt:
 - izveidot backend (Flask / Node.js);
 - pievienot datubāzi (SQLite / MySQL);
 - izveidot konteineru sarakstu un datu saglabāšanu.
-
-Šie uzlabojumi pārvērstu projektu par pilnvērtīgu web aplikāciju.
 
 ---
 
