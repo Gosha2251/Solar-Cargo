@@ -95,7 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </form>
 
 <p>
-    <?php echo $kluda; ?>
+    <?php echo escape($kluda); ?>
 </p>
 
 </div>
