@@ -1,30 +1,44 @@
 # Solar Cargo — Web Projekts
 
-## Aktuālais projektā
+## Projekta versiju statuss
 
-### Izmaiņas
-Projektā ir modernizēta datu glabāšanas sistēma, izmantojot MariaDB datubāzi, kas nodrošina centralizētu datu glabāšanu un efektīvāku informācijas apstrādi.
+Projektā pašlaik ir saglabātas divas Solar Cargo attīstības versijas.
 
-**PB2 versijā:** sistēma izmantoja HTML, CSS, Google Forms un Google Sheets datu glabāšanai. Lietotāji varēja ievadīt konteineru informāciju formā, bet dati tika glabāti ārpus projekta datubāzes.
+### PB2 statiskā versija
 
-**Pizīme:**
-*Pašlaik Web lapa nav savienota ar datubāzi, taču viss nepieciešamais sagatavots, lai turpmāk to savienot.*
+Galvenais fails: `index.html`
 
-### Kas mainījās salīdzinājumā ar PB2?
+Šī versija izmanto:
 
-PB2 versijā:
+- HTML un CSS;
+- Google Forms datu ievadei;
+- Google Sheets datu glabāšanai un attēlošanai;
+- GitHub Pages publicēšanai.
 
-- dati tika glabāti Google Forms un Google Sheets;
-- nebija SQL datubāzes;
-- nebija iespējams izmantot SQL vaicājumus datu analīzei;
-- datu pārvaldība bija ierobežota.
+### PB3 PHP prototips
 
-PB3 versijā:
+Galvenais fails: `index.php`
 
-- dati tiek glabāti MariaDB datubāzē;
-- izveidota tabula `containers`;
-- iespējams izmantot SELECT vaicājumus;
-- iespējams filtrēt, kārtot un analizēt datus.
+Šī versija izmanto:
+
+- PHP;
+- MariaDB;
+- lietotāju autentifikāciju;
+- sesijas;
+- administratora lomu.
+
+PHP prototipā ir sagatavota autentifikācija un datubāzes struktūra, taču konteineru web saskarne vēl nav pilnībā savienota ar MariaDB tabulu `containers`.
+
+### Konfigurācija
+
+Reālie datubāzes piekļuves dati tiek glabāti failā
+`config.local.php`.
+
+Šis fails netiek pievienots Git repozitorijam.
+
+Konfigurācijas paraugs ir pieejams failā:
+
+`config.example.php`
 
 ---
 
